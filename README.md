@@ -146,6 +146,35 @@ The SQLite database row is a scheduler-state mirror used for:
 
 The DB row alone is not enough to make an automation visible in the Automations tab.
 
+## Automation Run Memory
+
+When a scheduled automation runs, the automation runner may provide runtime instructions that tell the agent to maintain a per-automation memory file:
+
+```text
+$CODEX_HOME/automations/<automation_id>/memory.md
+```
+
+These instructions are not stored as fields inside `automation.toml`. They are part of the automation run context that the agent sees when the scheduled job starts.
+
+The runtime instruction pattern is:
+
+```text
+Read $CODEX_HOME/automations/<automation_id>/memory.md first if it exists.
+Create it if it is missing.
+Update it before returning.
+```
+
+The practical purpose is continuity across recurring runs. A useful `memory.md` can record:
+
+- last successful run time
+- input sources used
+- output files or folders created
+- previous snapshot or comparison baseline
+- known quirks for the next run
+- unresolved follow-up items
+
+Do not store secrets in `memory.md`. Avoid tokens, cookies, private keys, passwords, or unnecessary personal paths. The required file for automation visibility and scheduling remains `automation.toml`; `memory.md` is run continuity state.
+
 ## Visibility Rules
 
 For an automation to appear in the Automations tab:

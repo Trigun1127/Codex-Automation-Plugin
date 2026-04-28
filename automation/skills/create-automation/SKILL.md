@@ -199,6 +199,35 @@ Important behavior:
 - The parser silently ignores invalid TOML or schema-invalid automations.
 - The directory name must match the TOML `id`.
 
+## Automation Run Memory
+
+When a scheduled automation runs, the automation runner may inject runtime instructions that tell the agent to use:
+
+```text
+$CODEX_HOME/automations/<automation_id>/memory.md
+```
+
+These instructions are run-context instructions, not fields in `automation.toml`.
+
+The expected behavior is:
+
+```text
+Read memory.md first if present.
+Create memory.md if missing.
+Update memory.md before returning.
+```
+
+Use `memory.md` for continuity between recurring runs:
+
+- last run time
+- input source or target
+- output artifacts
+- previous snapshot or comparison baseline
+- known quirks or failure notes
+- next-run reminders
+
+Do not store secrets, cookies, tokens, private keys, passwords, or unnecessary personal paths in `memory.md`. Do not treat `memory.md` as required for Automations tab visibility; `automation.toml` is still the scheduling and listing source of truth.
+
 ## Local Fallback TOML Schema
 
 Cron automation example:
