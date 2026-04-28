@@ -1,0 +1,43 @@
+{
+  "name": "automation",
+  "version": "0.1.0",
+  "description": "Automation builder plugin\n\nAliases: @automation, automation, scheduler.\n\nUse this plugin when the user wants to create, inspect, update, or explain Codex automations. It packages a reusable workflow for turning plain-English requests into a concrete automation spec with schedule, prompt, execution mode, workspace, and validation steps.",
+  "author": {
+    "name": "OpenAI Codex + User Workspace"
+  },
+  "homepage": "https://github.com/Trigun1127/Codex-Automation-Plugin",
+  "repository": "https://github.com/Trigun1127/Codex-Automation-Plugin",
+  "license": "Proprietary",
+  "keywords": [
+    "automation",
+    "scheduler",
+    "codex",
+    "workflow",
+    "rrule"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Automation",
+    "shortDescription": "Create and inspect Codex automations",
+    "longDescription": "Turn plain-English requests into Codex automation definitions, inspect existing automations, and standardize schedule and prompt structure for recurring work.",
+    "developerName": "OpenAI Codex + User Workspace",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write",
+      "Interactive"
+    ],
+    "websiteURL": "https://github.com/Trigun1127/Codex-Automation-Plugin",
+    "privacyPolicyURL": "https://openai.com/policies/row-privacy-policy/",
+    "termsOfServiceURL": "https://openai.com/policies/row-terms-of-use/",
+    "defaultPrompt": [
+      "Create a daily automation at 9:30 AM for this project.",
+      "Inspect my existing automation and explain how it runs.",
+      "Update an automation to run in the evening too."
+    ],
+    "brandColor": "#1F6FEB",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "screenshots": []
+  }
+}
